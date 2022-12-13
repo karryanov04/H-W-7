@@ -25,8 +25,10 @@ var cost = [Int]()
 var pro = ["kyrg"]
 var massa = [Float]()
 var barcode = [String]()
-var skidka = 0
+var skidka = 0.2
 var finalCost = 0
+
+
 for(index, item) in shop.enumerated() {
     if index == 0 {
         shop.append("Хлеб")
@@ -34,7 +36,7 @@ for(index, item) in shop.enumerated() {
         massa.append(0.20)
         cost.append(20)
         barcode.append("XXX0012XXX")
-        print("\(shop[1]): производитель - \(pro[1]), масса хлеба - \(massa[0])гр, цена - \(cost[0])сом, штрих-код товара - \(barcode[0])")
+        print("\(shop[1]): производитель - \(pro[1]), масса хлеба - \(massa[0])гр, цена - \(cost[0])сом, цена со скидкой - \(cost[0] - Int(Double(cost[0]) * skidka)) штрих-код товара - \(barcode[0])")
         }
     if index == 0 {
         shop.append("Нитро")
@@ -42,7 +44,7 @@ for(index, item) in shop.enumerated() {
         massa.append(0.500)
         cost.append(65)
         barcode.append("XXX013XXX")
-        print ("\(shop[2]): производитель - \(pro[1]), масса нитро \(massa[1])гр, цена - \(cost[1])сом, штрих-код товара - \(barcode[1])")
+        print ("\(shop[2]): производитель - \(pro[1]), масса нитро \(massa[1])гр, цена - \(cost[1])сом, цена со скидкой - \(cost[1] - Int(Double(cost[0]) * skidka)),штрих-код товара - \(barcode[1])")
     }
     if index == 0 {
         shop.append("Чипсы")
@@ -50,7 +52,7 @@ for(index, item) in shop.enumerated() {
         cost.append(110)
         massa.append(0.100)
         barcode.append("XXX014XXX")
-        print ("\(shop[3]): производитель - \(pro[1]), масса чипс \(massa[2])гр, цена - \(cost[2])сом, штрих-код товара - \(barcode[2])")
+        print ("\(shop[3]): производитель - \(pro[1]), масса чипс \(massa[2])гр, цена - \(cost[2])сом, цена со скидкой - \(cost[2] - Int(Double(cost[2]) * skidka)), штрих-код товара - \(barcode[2])")
     }
     if index == 0 {
         shop.append("Молоко")
@@ -58,15 +60,11 @@ for(index, item) in shop.enumerated() {
         massa.append(1)
         cost.append(80)
         barcode.append("XXX015XXX")
-        print ("\(shop[4]): производитель - \(pro[1]), масса молока \(massa[3])л, цена - \(cost[3])сом, штрих-код товара - \(barcode[3])")
+        print ("\(shop[4]): производитель - \(pro[1]), масса молока \(massa[3])л, цена - \(cost[3])сом, цена со скидкой - \(cost[3] - Int(Double(cost[3]) * skidka)), штрих-код товара - \(barcode[3])")
+        var finalCost = (cost[0] + cost[1] + cost[2] + cost[3]) - Int(skidka * Double(cost[0] + cost[1] + cost[2] + cost[3]))
+        var total = (cost[0] + cost[1] + cost[2] + cost[3]) - finalCost
+        var totalcost = (cost[0] + cost[1] + cost[2] + cost[3] - finalCost)
+        print ("\(cost[0] + cost[1] + cost[2] + cost[3]), со скидкой - \(finalCost), общая цена - \(totalcost)")
     }
-    if index == 0 {
-        print ("\(shop[4]): производитель - \(pro[1]), масса молока \(massa[3])л, цена - \(cost[3])сом, штрих-код товара - \(barcode[3])")
-        var finalcost = (cost[0] + cost[1] + cost[2] + cost[3]) / 100 * 5
-        var totalcost = (cost[0] + cost[1] + cost[2] + cost[3] - finalcost)
-        print("\(cost[0] + cost[1] + cost[2] + cost[3]), со скидкой - \(finalcost), общая цена - \(totalcost)")
-        print("\(shop.count) - видов в магазине")
-    }
-
-    }
+}
 
